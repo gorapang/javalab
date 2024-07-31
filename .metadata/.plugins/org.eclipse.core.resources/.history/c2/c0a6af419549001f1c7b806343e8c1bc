@@ -1,0 +1,41 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class MySQLJDBCExample {
+    public static void main(String[] args) {
+        String jdbcUrl = "jdbc:mysql://localhost:3306/testdb";
+        String username = "root";
+        String password = "myPassword";
+
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            // 1. 드라이버 로드
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // 2. 데이터베이스 연결
+            connection = DriverManager.getConnection(jdbcUrl, username, password);
+
+            // 3. SQL 쿼리 실행
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM mytable");
+
+            // 4. 결과 처리
+            while (resultSet.next()) {
+                System.out.println("Column 1: " + resultSet.getString("column1"));
+                System.out.println("Column 2: " + resultSet.getInt("column2"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // 5. 리소스 정리
+            try { if (resultSet != null) resultSet.close(); } catch (Exception e) { e.printStackTrace(); }
+            try { if (statement != null) statement.close(); } catch (Exception e) { e.printStackTrace(); }
+            try { if (connection != null) connection.close(); } catch (Exception e) { e.printStackTrace(); }
+        }
+    }
+}

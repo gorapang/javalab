@@ -1,0 +1,7 @@
+1721869767689	Copy compilation unit
+1721869808242	Rename type 'MySQLJDBCExample'
+1721869826463	Rename type 'MySQLConnectionProperty'
+1721871669638	Move 'db.properties' to 'step07_JDBCbasic'
+1721874688089	Copy compilation unit
+1721878203220	Copy method
+1721879443926	Rename local variable 'stmt'

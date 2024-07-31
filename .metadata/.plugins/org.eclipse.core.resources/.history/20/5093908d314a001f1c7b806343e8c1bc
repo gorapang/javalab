@@ -1,0 +1,26 @@
+package step01.basic;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import org.junit.Test;
+
+public class ConnectionProperty2 {
+	
+	//select * from dept
+	@Test
+    public void connect() {
+        try {
+            // 중복 코드 최소화하여 데이터베이스 연결
+            Connection conn = DBUtil.getConnection();
+
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        System.out.println("예외 처리로 인해 정상, 비정상 이어도 실행되는 영역");
+    }
+	
+}

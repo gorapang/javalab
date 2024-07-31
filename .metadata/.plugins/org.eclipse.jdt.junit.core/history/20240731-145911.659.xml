@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Step02RunTest" project="step10_JPAJoin" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="step02.onetoonejoin.Step02RunTest" time="2.011">
+    <testcase name="step01Test" classname="step02.onetoonejoin.Step02RunTest" time="2.011"/>
+  </testsuite>
+</testrun>

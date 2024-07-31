@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="RunningTest" project="step09_JPAbasic" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="running.RunningTest" time="1.747">
+    <testcase name="step04" classname="running.RunningTest" time="1.747"/>
+  </testsuite>
+</testrun>
