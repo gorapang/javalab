@@ -24,7 +24,7 @@ import lombok.ToString;
 
 @SequenceGenerator(name = "member_seq", sequenceName = "member_seq_id", 
 				   allocationSize = 50, initialValue = 1)
-@Entity
+//@Entity
 public class Member2 {
 
 	@Id

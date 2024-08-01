@@ -35,11 +35,11 @@ public class Member3 {
 	private long memberId;
 	
 	@NonNull
-	@Column(length = 20) //컬럼 사이즈 20byte
+	@Column(length = 20, nullable = false) //컬럼 사이즈 20byte
 	private String name;
 	
 	@NonNull
-	@OneToOne
+	@OneToOne //Member 하나는 Team 하나에 소속 (멤버 기준)
 	@JoinColumn(name="team_id")  //Team3의 pk 변수에 선언된 매핑된 컬럼명
 	private Team3 teamId;
 	

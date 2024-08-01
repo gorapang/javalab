@@ -36,7 +36,5 @@ public class Team3 {
 	@NonNull
 	@Column(name="team_name", length = 20)
 	private String teamName;
-	
-	
-	
+
 }
