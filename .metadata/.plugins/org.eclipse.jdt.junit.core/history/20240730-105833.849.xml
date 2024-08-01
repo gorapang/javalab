@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="DBUtil" project="step09_JPAbasic" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="util.DBUtil" time="1.678">
-    <testcase name="test" classname="util.DBUtil" time="1.678"/>
-  </testsuite>
-</testrun>
