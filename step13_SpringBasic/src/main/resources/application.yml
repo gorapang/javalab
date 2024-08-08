@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: demo-1
+server:
+  servlet:
+    context-path: /ce
+  port: 80

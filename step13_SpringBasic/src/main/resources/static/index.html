@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index.html</title>
+</head>
+<body>
+
+<button id="dataViewPeople">People 정보</button><br>
+<button id="dataViewPeople2">People 정보 입력</button><br>
+<button id="axiospost">axios post</button><br>
+<button id="axiosget">axios get</button><br>
+<div id="dataView"></div>
+
+
+<!-- Axios 라이브러리를 로드 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script type=text/javascript>
+	//?get과 post 둘 다 개별 함수로 개발
+	//axios library 사용해서 개발 - postman 사용 금지
+	//node.js 설치도 금지
+
+	// axios POST 요청을 보내는 함수
+	function sendAxiosPost() {
+		axios({
+			method: "post",
+			url: "/ce/fisadata",
+			data: {
+				name: "연아",
+				age: 11
+			}
+		}).then(res => {
+			console.log("res", res);
+		}).catch(err => {
+			console.log("err", err);
+		});
+	}
+	
+	// axios GET 요청을 보내는 함수
+	function sendAxiosGet() {
+		axios.get('/fisadata?name=연아&age=10')
+		.then(res => {
+			console.log("res", res);
+		}).catch(err => {
+			console.log("err", err);
+		});
+	}
+	
+	// axiospost 버튼 클릭 이벤트 리스너
+	axiospost.addEventListener("click", sendAxiosPost);
+	axiosget.addEventListener("click", sendAxiosGet);
+	
+	
+/* 
+	dataViewPeople2.addEventListener("click", function() {
+ 		xhttp.onreadystatechange = function() { 
+ 		   if (this.readyState == 4 && this.status == 200) { 
+ 			   let resData = this.responseText; 
+ 		   }
+ 		}
+ 		
+ 		xhttp.open("POST", "fisadata"); 
+ 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); //post 방식의 필수 설정
+ 		xhttp.send("name=연아&age=10");
+ 	});
+ */
+
+ 
+/*
+서버와 클라이언트 소통 - 문자열
+서버 -> 클라이언트: server는 html/css/js도 순수 문자열로 간주
+	client의 브라우저가 실행 코드로 간주 후 브라우저 실행
+	응답된 문자열 js 객체화하는 형식은 JSON만 고려
+	단, JSON 변환 가능한 문자열 형식이어야 JSON.parse()
+ */
+	
+ 	//http://ip:80/ce/index.html
+ 	dataViewPeople.addEventListener("click", function() {
+ 		//alert(1);
+ 		xhttp.onreadystatechange = function() { //readystate 값이 변경될 때마다 감지 및 동작 수행	
+ 		   if (this.readyState == 4 && this.status == 200) { //4: 응답 완료
+ 			   let resData = this.responseText; //server 응답 데이터 가로채는 속성
+ 			   
+ 			   console.log(resData, typeof(resData)); //{"name":"연아","age":10} string
+ 			   console.log(resData.name, typeof(resData)); //undefined 'string'
+ 			   
+ 			   console.log("가공 직후");
+ 			   //key 로 value 구조의 java script 객체(JSON)
+ 			   resData = JSON.parse(resData);
+ 			   console.log(resData.name, typeof(resData)); //연아 object
+ 			   /*
+ 			   div tag에 데이터 또는 html 구조 자체를 출력하는 속성
+ 			   innerText = 순수 문자열, html 형식도 문자열로 간주 
+ 			   innerHTML = html 형식의 문자열을 html tag로 처리
+ 			   */
+ 			   dataView.innerText = resData.name;
+ 		   }
+ 		}
+ 		
+ 		xhttp.open("POST", "fisa"); 
+ 		xhttp.send();
+ 	});
+ 	
+	const xhttp = new XMLHttpRequest(); //비동기 요청 자바스크립트 객체
+	
+	xhttp.onreadystatechange = function() { //readystate 값이 변경될 때마다 감지 및 동작 수행	
+	   if (this.readyState == 4 && this.status == 200) { //4: 응답 완료
+		   let resData = this.responseText; //server 응답 데이터 가로채는 속성
+		   console.log(resData, typeof(resData));
+		   console.log(resData.name, typeof(resData));
+		   
+		   console.log("가공 직후");
+		   //key 로 value 구조의 java script 객체(JSON)
+		   resData = JSON.parse(resData);
+		   console.log(resData.name, typeof(resData));
+	   }
+	}
+
+
+
+</script>
+
+</body>
+</html>
