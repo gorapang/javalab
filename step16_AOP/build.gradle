@@ -27,19 +27,24 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
-	//순수 JDBC와 jsp 사용을 위한 추가 설정
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-		
-	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	
-	implementation 'jakarta.servlet:jakarta.servlet-api' //스프링부트 3.0 이상
-	implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api' //스프링부트 3.0 이상
-	implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl' //스프링부트 3.0 이상
+	//sts 개발 tool 선택 옵션이 없어서 mave repository에서 AOP검색으로 선택
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+	
+	//spring이 사용하는 라이브러리 - aop 지원 라이브러리, 표현식도 문서 참조 필수
+	// https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
+	runtimeOnly 'org.aspectj:aspectjweaver:1.9.9.1'
+	
+	//동적으로 byte code 생성
+	// https://mvnrepository.com/artifact/cglib/cglib
+	implementation 'cglib:cglib:3.3.0'
+	
+	
+	implementation 'log4j:log4j:1.2.17'
 }
 
 tasks.named('test') {
